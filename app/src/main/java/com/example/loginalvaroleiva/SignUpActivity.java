@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private EditText editTextName;
     private EditText editTextPassword;
@@ -19,7 +19,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_up);
         BindUI();
         buttonSignIn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,10 +30,10 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void BindUI() {
-        editTextName = findViewById(R.id.editTextName);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        editTextPasswordConfirm = findViewById(R.id.editTextPasswordConfirm);
-        buttonSignIn2 = findViewById(R.id.buttonSignIn2);
+        editTextName = findViewById(R.id.editTextSignUpName);
+        editTextPassword = findViewById(R.id.editTextSignInPassword);
+        editTextPasswordConfirm = findViewById(R.id.editTextSignInPasswordConfirm);
+        buttonSignIn2 = findViewById(R.id.buttonSignInConfirm);
     }
 
     private String getName() {
@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
             Toast.makeText(this,"Credenciales inválidas",Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this,"Te has registrado con éxito",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
             startActivity(intent);
         }
     }

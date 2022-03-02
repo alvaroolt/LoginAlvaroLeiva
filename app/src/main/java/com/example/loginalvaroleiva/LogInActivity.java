@@ -29,9 +29,9 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void BindUI() {
-        editTextNombre = findViewById(R.id.editTextNombre);
-        editTextPass = findViewById(R.id.editTextTPass);
-        buttonLogIn2 = findViewById(R.id.buttonLogIn2);
+        editTextNombre = findViewById(R.id.editTextLogInName);
+        editTextPass = findViewById(R.id.editTextTLogInPass);
+        buttonLogIn2 = findViewById(R.id.buttonLogInConfirm);
     }
 
     private String getNombre() {

@@ -29,8 +29,8 @@ public class RecoveryActivity extends AppCompatActivity {
     }
 
     private void BindUI() {
-        editTextNombre3 = findViewById(R.id.editTextNombre3);
-        editTextNewPass = findViewById(R.id.editTextNewPass);
+        editTextNombre3 = findViewById(R.id.editTextRecoveryName);
+        editTextNewPass = findViewById(R.id.editTextRecoveryNewPass);
         buttonConfirmNewPass = findViewById(R.id.buttonConfirmNewPass);
     }
 
