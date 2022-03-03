@@ -15,7 +15,6 @@ import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private TextView textView;
     private EditText editTextName;
     private EditText editTextPassword;
     private EditText editTextPasswordConfirm;
@@ -39,7 +38,6 @@ public class SignUpActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextSignInPassword);
         editTextPasswordConfirm = findViewById(R.id.editTextSignInPasswordConfirm);
         buttonSignIn2 = findViewById(R.id.buttonSignInConfirm);
-        textView = findViewById(R.id.textView);
     }
 
     private String getName() {
@@ -61,11 +59,8 @@ public class SignUpActivity extends AppCompatActivity {
             Usuario.name = editTextName.getText().toString();
             Usuario.pass = editTextPassword.getText().toString();
             Toast.makeText(this,"Te has registrado con éxito",Toast.LENGTH_SHORT).show();
-            if(Objects.equals(getPassword(), getPasswordConfirm())) {
-                textView.setText("ey");
-            }
-            //Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+            startActivity(intent);
         }
     }
 }

@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class RecoveryActivity extends AppCompatActivity {
 
-    private EditText editTextNombre3;
-    private EditText editTextNewPass;
+    private EditText editTextRecoveryName;
+    private EditText editTextRecoveryNewPass;
+    private EditText editTextRecoveryConfirmPass;
     private Button buttonConfirmNewPass;
 
     @Override
@@ -29,28 +32,34 @@ public class RecoveryActivity extends AppCompatActivity {
     }
 
     private void BindUI() {
-        editTextNombre3 = findViewById(R.id.editTextRecoveryName);
-        editTextNewPass = findViewById(R.id.editTextRecoveryNewPass);
+        editTextRecoveryName = findViewById(R.id.editTextRecoveryName);
+        editTextRecoveryNewPass = findViewById(R.id.editTextRecoveryNewPass);
+        editTextRecoveryConfirmPass = findViewById(R.id.editTextRecoveryConfirmPass);
         buttonConfirmNewPass = findViewById(R.id.buttonConfirmNewPass);
     }
 
     private String getNombre() {
-        return editTextNombre3.getText().toString().trim();
+        return editTextRecoveryName.getText().toString().trim();
     }
 
     private String getPass() {
-        return editTextNewPass.getText().toString().trim();
+        return editTextRecoveryNewPass.getText().toString().trim();
+    }
+
+    private String getConfirmPass() {
+        return editTextRecoveryConfirmPass.getText().toString().trim();
     }
 
     private void comprobarCredenciales() {
-        if(getNombre() == "" || getPass() == "") {
-            Toast.makeText(this,"Credenciales inválidas",Toast.LENGTH_SHORT).show();
-        } else if(getNombre() == "user" && getPass() == "user"){
-            Toast.makeText(this,"Cambiaste la contraseña con éxito",Toast.LENGTH_SHORT).show();
+        if(!Objects.equals(Usuario.name, getNombre())) {
+            Toast.makeText(this,"No existe el usuario",Toast.LENGTH_SHORT).show();
+        } else if(!Objects.equals(getPass(), getConfirmPass()) || getPass().isEmpty() || getConfirmPass().isEmpty()){
+            Toast.makeText(this,"No coinciden las contraseñas",Toast.LENGTH_SHORT).show();
+        } else {
+            Usuario.pass = editTextRecoveryNewPass.getText().toString();
             Intent intent = new Intent(RecoveryActivity.this, MainActivity.class);
             startActivity(intent);
-        } else {
-            Toast.makeText(this,"Hubo algún error",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Contraseña actualizada con éxito",Toast.LENGTH_SHORT).show();
         }
     }
 }
