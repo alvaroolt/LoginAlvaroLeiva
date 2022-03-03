@@ -45,7 +45,7 @@ public class LogInActivity extends AppCompatActivity {
     private void comprobarCredenciales() {
         if(getNombre() == "" || getPass() == "") {
             Toast.makeText(this,"Credenciales inválidas",Toast.LENGTH_SHORT).show();
-        } else if(getNombre() == "user" && getPass() == "user"){
+        } else if(getNombre() == "" && getPass() == ""){
             Toast.makeText(this,"Has iniciado sesión con éxito",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LogInActivity.this, MainActivity.class);
             startActivity(intent);

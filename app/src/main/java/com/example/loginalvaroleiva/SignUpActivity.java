@@ -7,10 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.lang.reflect.Field;
+import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    private TextView textView;
     private EditText editTextName;
     private EditText editTextPassword;
     private EditText editTextPasswordConfirm;
@@ -34,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextSignInPassword);
         editTextPasswordConfirm = findViewById(R.id.editTextSignInPasswordConfirm);
         buttonSignIn2 = findViewById(R.id.buttonSignInConfirm);
+        textView = findViewById(R.id.textView);
     }
 
     private String getName() {
@@ -49,12 +55,17 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void comprobarCredenciales() {
-        if(getName() == "" || getPassword() == "" || getPasswordConfirm() == "") {
+        if(getName().isEmpty() || getPassword().isEmpty() || getPasswordConfirm().isEmpty() || !Objects.equals(getPassword(), getPasswordConfirm())) {
             Toast.makeText(this,"Credenciales inválidas",Toast.LENGTH_SHORT).show();
         } else {
+            Usuario.name = editTextName.getText().toString();
+            Usuario.pass = editTextPassword.getText().toString();
             Toast.makeText(this,"Te has registrado con éxito",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-            startActivity(intent);
+            if(Objects.equals(getPassword(), getPasswordConfirm())) {
+                textView.setText("ey");
+            }
+            //Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+            //startActivity(intent);
         }
     }
 }
